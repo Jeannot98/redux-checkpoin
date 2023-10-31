@@ -6,7 +6,7 @@ import { updateTask } from '../features/TaskReducer';
 const Update = () => {
   const { id } = useParams();
   const tasks = useSelector((state) => state.tasks);
-  const existingTask = tasks.filter(f => f.id == id);
+  const existingTask = tasks.filter(f => Number(f.id) === Number(id));
   const { name, description, isDone } = existingTask[0];
 
   const [uname, setName] = useState(name)
@@ -43,7 +43,7 @@ const Update = () => {
             <input value={udescription} onChange={e => setDescription(e.target.value)} type="text" name='description' placeholder='task Description' />
           </div>
           <div>
-            <label htmlFor="description">Description:</label>
+            <label htmlFor="description">State:</label>
             <input onChange={() => setIsDone(true)} type="checkbox" name='description' placeholder='task Description' />
           </div>
 

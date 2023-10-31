@@ -11,7 +11,7 @@ const taskSlice = createSlice({
         },
         updateTask: (state, action)=>{
             const {id, name, description, isDone} = action.payload;
-            const ut = state.find(user=> user.id == id);
+            const ut = state.find(user=> Number(user.id) === Number(id));
             if(ut){
                 ut.name = name;
                 ut.description = description;
@@ -20,7 +20,7 @@ const taskSlice = createSlice({
         },
         deletetask: (state, action) =>{
             const {id} = action.payload;
-            const ut = state.find(user=> user.id == id);
+            const ut = state.find(user=> Number(user.id) === Number(id));
             if(ut){
                 return state.filter(f => f.id !== id)
             }
